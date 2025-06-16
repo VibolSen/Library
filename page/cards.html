@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Cards - Library Management System</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Toggle Button -->
+        <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-label="Open sidebar">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Sidebar Overlay for mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-book-open"></i>
+                    <h2>STEPLibrary</h2>
+                </div>
+                <!-- Close button for mobile -->
+                <button type="button" class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a></li>
+                <li><a href="books.html" class="nav-link">
+                        <i class="fas fa-book"></i>
+                        <span>Books</span>
+                    </a></li>
+                <li><a href="visitors.html" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span>Visitors</span>
+                    </a></li>
+                <li><a href="cards.html" class="nav-link active">
+                        <i class="fas fa-id-card"></i>
+                        <span>Library Cards</span>
+                    </a></li>
+                <li><a href="statistics.html" class="nav-link">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Statistics</span>
+                    </a></li>
+                    <li><a href="https://myportfolio-udej.vercel.app/" class="nav-link">
+                            <i class="fas fa-cog"></i>
+                            <span>About-Author</span>
+                        </a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <header class="page-header">
+                <div class="header-content">
+                    <h1><i class="fas fa-id-card"></i> Library Cards</h1>
+                    <div class="header-actions">
+                        <button type="button" id="lendBookBtn" class="btn btn-primary">
+                            <i class="fas fa-handshake"></i> Lend Book
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="page-content">
+                <!-- Search and Filter Controls -->
+                <div class="controls-card">
+                    <div class="search-section">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="cardSearch" placeholder="Search cards by visitor or book...">
+                        </div>
+
+                        <div class="filter-section">
+                            <select id="cardSort">
+                                <option value="">Sort by...</option>
+                                <option value="borrowDate">Borrow Date (Newest First)</option>
+                                <option value="visitorName">Visitor Name</option>
+                                <option value="bookName">Book Name</option>
+                                <option value="status">Status</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cards List -->
+                <div class="data-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-list"></i> Library Cards</h3>
+                        <span id="cardsCount" class="count-badge">0 cards</span>
+                    </div>
+                    <div id="cardsList" class="data-content"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Card Modal -->
+    <div id="cardModal" class="modal-overlay">
+        <div class="form-card modal-content">
+            <div class="form-header">
+                <h3><i class="fas fa-handshake"></i> Lend Book</h3>
+                <button id="closeFormBtn" class="btn-close" type="button" aria-label="Close form">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <form id="cardForm" class="fancy-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cardVisitor">
+                            <i class="fas fa-user"></i> Select Visitor *
+                        </label>
+                        <select id="cardVisitor" required>
+                            <option value="">Choose a visitor...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cardBook">
+                            <i class="fas fa-book"></i> Select Book *
+                        </label>
+                        <select id="cardBook" required>
+                            <option value="">Choose a book...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cardBorrowDate">
+                            <i class="fas fa-calendar"></i> Borrow Date
+                        </label>
+                        <input type="date" id="cardBorrowDate" readonly>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-handshake"></i> Lend Book
+                    </button>
+                    <button type="button" id="cancelFormBtn" class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/data-manager.js"></script>
+    <script src="../js/notification.js"></script>
+    <script src="../js/sidebar.js"></script>
+    <script src="../js/cards.js"></script>
+</body>
+
+</html>

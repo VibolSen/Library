@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitors - Library Management System</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Toggle Button -->
+        <button class="sidebar-toggle" id="sidebarToggle" type="button" aria-label="Open sidebar">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Sidebar Overlay for mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-book-open"></i>
+                    <h2>STEPLibrary</h2>
+                </div>
+                <!-- Close button for mobile -->
+                <button type="button" class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a></li>
+                <li><a href="books.html" class="nav-link">
+                        <i class="fas fa-book"></i>
+                        <span>Books</span>
+                    </a></li>
+                <li><a href="visitors.html" class="nav-link active">
+                        <i class="fas fa-users"></i>
+                        <span>Visitors</span>
+                    </a></li>
+                <li><a href="cards.html" class="nav-link">
+                        <i class="fas fa-id-card"></i>
+                        <span>Library Cards</span>
+                    </a></li>
+                <li><a href="statistics.html" class="nav-link">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Statistics</span>
+                    </a></li>
+                    <li><a href="https://myportfolio-udej.vercel.app/" class="nav-link">
+                            <i class="fas fa-cog"></i>
+                            <span>About-Author</span>
+                        </a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <header class="page-header">
+                <div class="header-content">
+                    <h1><i class="fas fa-users"></i> Visitors Management</h1>
+                    <div class="header-actions">
+                        <button type="button" id="addVisitorBtn" class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> Add New Visitor
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="page-content">
+                <!-- Search and Filter Controls -->
+                <div class="controls-card">
+                    <div class="search-section">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="visitorSearch" placeholder="Search visitors by name or phone...">
+                        </div>
+
+                        <div class="filter-section">
+                            <select id="visitorSort">
+                                <option value="">Sort by...</option>
+                                <option value="id">ID</option>
+                                <option value="name">Name</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visitors List -->
+                <div class="data-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-list"></i> Registered Visitors</h3>
+                        <span id="visitorsCount" class="count-badge">0 visitors</span>
+                    </div>
+                    <div id="visitorsList" class="data-content"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Visitor Modal -->
+    <div id="visitorModal" class="modal-overlay">
+        <div class="form-card modal-content">
+            <div class="form-header">
+                <h3 id="visitorFormTitle"><i class="fas fa-user-plus"></i> Add New Visitor</h3>
+                <button id="closeFormBtn" class="btn-close" type="button" aria-label="Close form">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <form id="visitorForm" class="fancy-form">
+                <input type="hidden" id="visitorId">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="visitorName">
+                            <i class="fas fa-user"></i> Full Name *
+                        </label>
+                        <input type="text" id="visitorName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="visitorPhone">
+                            <i class="fas fa-phone"></i> Phone Number *
+                        </label>
+                        <input type="text" id="visitorPhone" required pattern="[0-9\s\-]+">
+                        <small>Only numbers, spaces, and dashes allowed</small>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Save Visitor
+                    </button>
+                    <button type="button" id="cancelFormBtn" class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/data-manager.js"></script>
+    <script src="../js/notification.js"></script>
+    <script src="../js/sidebar.js"></script>
+    <script src="../js/visitors.js"></script>
+</body>
+
+</html>
